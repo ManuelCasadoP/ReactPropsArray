@@ -12,16 +12,24 @@ function App() {
   }
 
   function addNuevaPalabraHandler () {
-    const palabrasActuales = Array.from(palabras);
-    palabrasActuales.push(nuevaPalabra);
-    setPalabras(palabrasActuales);
-    //setPalabras([...palabras, nuevaPalabra])
+    //Se puede hacer lo mismo con una sola línea en vez de las 3 de abajo.
+    //const palabrasActuales = Array.from(palabras); // Se puede hacer con solo un línea.
+    //palabrasActuales.push(nuevaPalabra); // Se puede hacer con solo una línea.
+    //setPalabras(palabrasActuales);       // Se puede hacer con solo una línea.
+    setPalabras([...palabras, nuevaPalabra])
+    
+    setNuevaPalabra("");
+  }
+
+  function resetPalabras() {
+    setPalabras("");
   }
 
   return (
     <>
         <input value={nuevaPalabra} onChange={updateNuevaPalabraHandler}/>
         <button onClick={addNuevaPalabraHandler}>Añadir</button>
+        <button onClick={resetPalabras}>Reset</button>
         <ListaPalabras listaPalabras={palabras}/>
     </>
 
